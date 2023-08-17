@@ -1,7 +1,6 @@
 import librosa
 import numpy as np
 
-
 def calculate_audio_features(y, sr):
     # Calculate Chroma Short-Time Fourier Transform (STFT)
     chroma_stft_mean = np.mean(librosa.feature.chroma_stft(y=y, sr=sr))
@@ -45,8 +44,6 @@ def calculate_audio_features(y, sr):
     mfcc_means = np.mean(mfccs, axis=1)  # Calculate means of MFCCs
     mfcc_vars = np.var(mfccs, axis=1)
 
-    mfccs = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=20)
-
     # Calculate mean and variance for each MFCC coefficient
     mfcc_means = np.mean(mfccs, axis=1)
     mfcc_variances = np.var(mfccs, axis=1)
@@ -62,18 +59,14 @@ def calculate_audio_features(y, sr):
     mfcc11_var, mfcc12_var, mfcc13_var, mfcc14_var, mfcc15_var, \
     mfcc16_var, mfcc17_var, mfcc18_var, mfcc19_var, mfcc20_var = mfcc_variances
 
+    all_features = [chroma_stft_mean, chroma_stft_var, rms_mean, rms_var, spectral_centroid_mean, spectral_centroid_var, spectral_bandwidth_mean, spectral_bandwidth_var, rolloff_mean, 
+                    rolloff_var, zero_crossing_rate_mean, zero_crossing_rate_var, harmony_mean, harmony_var, perceptr_mean, perceptr_var, tempo, mfcc1_mean, mfcc1_var, mfcc2_mean, mfcc2_var,
+                    mfcc3_mean, mfcc3_var, mfcc4_mean, mfcc4_var, mfcc5_mean, mfcc5_var, mfcc6_mean, mfcc6_var, mfcc7_mean, mfcc7_var, mfcc8_mean, mfcc8_var, mfcc9_mean, mfcc9_var, mfcc10_mean, mfcc10_var,
+                    mfcc11_mean, mfcc11_var, mfcc12_mean, mfcc12_var, mfcc13_mean, mfcc13_var, mfcc14_mean, mfcc14_var, mfcc15_mean, mfcc15_var, mfcc16_mean, mfcc16_var, mfcc17_mean, mfcc17_var,
+                    mfcc18_mean, mfcc18_var, mfcc19_mean, mfcc19_var, mfcc20_mean, mfcc20_var]
 
-	all_features = [chroma_stft_mean, chroma_stft_var, rms_mean, rms_var, spectral_centroid_mean, spectral_centroid_var, spectral_bandwidth_mean, spectral_bandwidth_var, rolloff_mean, 
-    rolloff_var, zero_crossing_rate_mean, zero_crossing_rate_var, harmony_mean, harmony_var, perceptr_mean, perceptr_var, tempo, mfcc1_mean, mfcc1_var, mfcc2_mean, mfcc2_var,
-	mfcc3_mean, mfcc3_var, mfcc4_mean, mfcc4_var, mfcc5_mean, mfcc5_var, mfcc6_mean, mfcc6_var, mfcc7_mean, mfcc7_var, mfcc8_mean, mfcc8_var, mfcc9_mean, mfcc9_var, mfcc10_mean, mfcc10_var,
-	mfcc11_mean, mfcc11_var, mfcc12_mean, mfcc12_var, mfcc13_mean, mfcc13_var, mfcc14_mean, mfcc14_var, mfcc15_mean, mfcc15_var, mfcc16_mean, mfcc16_var, mfcc17_mean, mfcc17_var,
-	mfcc18_mean, mfcc18_var, mfcc19_mean, mfcc19_var, mfcc20_mean, mfcc20_var]
-
-	combined_features = np.array(all_features)
-	
-	return combined_features
-
-
+    combined_features = np.array(all_features)
+    return combined_features
 
 def extract_audio_features(audio_path):
     y, sr = librosa.load(audio_path)
