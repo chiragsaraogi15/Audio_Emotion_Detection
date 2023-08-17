@@ -63,8 +63,7 @@ def calculate_audio_features(y, sr):
     mfcc16_var, mfcc17_var, mfcc18_var, mfcc19_var, mfcc20_var = mfcc_variances
 
 
-	all_features = [
-					chroma_stft_mean, chroma_stft_var, rms_mean, rms_var,
+	all_features = [chroma_stft_mean, chroma_stft_var, rms_mean, rms_var,
 					spectral_centroid_mean, spectral_centroid_var,
 					spectral_bandwidth_mean, spectral_bandwidth_var,
 					rolloff_mean, rolloff_var,
@@ -90,8 +89,7 @@ def calculate_audio_features(y, sr):
 					mfcc17_mean, mfcc17_var,
 					mfcc18_mean, mfcc18_var,
 					mfcc19_mean, mfcc19_var,
-					mfcc20_mean, mfcc20_var
-	]
+					mfcc20_mean, mfcc20_var]
 
 	combined_features = np.array(all_features)
 	
