@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import joblib
-from Audio_Feature_Extractor import extract_audio_features
+from audio_feature_extractor import extract_audio_features
 
 def main():
     st.title("Song Emotion Predictor")
