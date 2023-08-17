@@ -13,7 +13,7 @@ def main():
     label_encoder = joblib.load("Emotion_LabelEncoder.pkl")
 
     # Upload audio file
-    uploaded_file = st.file_uploader("Upload an audio file", type=["mp3"])
+    uploaded_file = st.file_uploader("Upload an audio file", type=["mp3","wav"])
 
     if uploaded_file is not None:
         st.audio(uploaded_file, format="audio/mp3")
