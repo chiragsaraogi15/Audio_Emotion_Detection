@@ -20,8 +20,9 @@ def main():
 
         feature_button = st.button("Predict Emotion")
         if feature_button:
-            audio_path = uploaded_file.name
-            extracted_features = extract_audio_features(audio_path)
+            audio_data = uploaded_file.read()
+            
+            extracted_features = extract_audio_features(audio_data)
             
             # Scale the features
             scaled_features = scaler.transform([extracted_features])

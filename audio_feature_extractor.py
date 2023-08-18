@@ -69,5 +69,5 @@ def calculate_audio_features(y, sr):
     return combined_features
 
 def extract_audio_features(audio_path):
-    y, sr = librosa.load(audio_path)
+    y, sr = librosa.load(audio_path, sr = None)
     return calculate_audio_features(y, sr)
