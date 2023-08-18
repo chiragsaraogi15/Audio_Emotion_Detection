@@ -1,5 +1,7 @@
 import librosa
 import numpy as np
+import pandas as pd
+import numba
 
 def calculate_audio_features(y, sr):
     # Calculate Chroma Short-Time Fourier Transform (STFT)
