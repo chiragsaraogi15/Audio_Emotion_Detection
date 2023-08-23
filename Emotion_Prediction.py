@@ -1,9 +1,8 @@
-import streamlit as st
-import librosa
-import numpy as np
-import pandas as pd
 import joblib
+import streamlit as st
+
 from audio_feature_extractor import extract_audio_features
+
 
 def main():
     st.title("Song Emotion Predictor")
@@ -23,9 +22,8 @@ def main():
         feature_button = st.button("Predict Emotion")
         if feature_button:
             audio_data = uploaded_file.read()
-            
             extracted_features = extract_audio_features(audio_data)
-            
+
             # Scale the features
             scaled_features = scaler.transform([extracted_features])
 
@@ -37,8 +35,7 @@ def main():
             predicted_label = label_encoder.inverse_transform(prediction)[0]
 
             st.write("Predicted Emotion:", predicted_label)
-            
-            # You can further process or display the prediction here
+
 
 if __name__ == "__main__":
     main()
